@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useFileUpload, useNhostClient } from "@nhost/nextjs";
 import { useRouter, useSearchParams } from "next/navigation";
+import toast from "react-hot-toast";
 
 const insertTodos = (title, userId, file_id) => {
   `
@@ -83,7 +84,7 @@ const Todo = () => {
       return;
     }
 
-    console.log("New Todo Added");
+    toast.success("New Todo Added");
 
     setTodoTitle("");
     setTodoAttachment(null);

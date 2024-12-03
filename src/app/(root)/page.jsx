@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 // import { nhost } from "@/lib/nhost";
 import { useNhostClient } from "@nhost/nextjs";
+import toast from "react-hot-toast";
 
 const getUserTodos = (userId) => `
     query  MyQuery{
@@ -92,14 +93,12 @@ export default function Home() {
   const handleUpdateTodo = async (id) => {
     const { error } = await nhostClient.graphql.request(updateTodo, { id });
 
-    console.log(id);
-
     if (error) {
       console.error({ error });
       return;
     }
 
-    console.log("Marked as complete");
+    toast.success("Marked as complete");
 
     setFetchAll(true);
   };
@@ -113,6 +112,8 @@ export default function Home() {
     if (error) {
       console.error({ error });
     }
+
+    toast.success("Todo Deleted");
 
     setFetchAll(true);
   };
