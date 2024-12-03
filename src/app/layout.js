@@ -1,3 +1,5 @@
+import "@/styles/globals.css";
+
 import ClientNhostProvider from "@/context/ClientNhostProvider";
 
 export default function RootLayout({ children }) {

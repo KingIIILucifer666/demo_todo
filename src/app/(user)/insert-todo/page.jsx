@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useFileUpload, useNhostClient } from "@nhost/nextjs";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const insertTodos = (title, userId) => {
+const insertTodos = (title, userId, file_id) => {
   `
     mutation MyMutation {
   insert_todos(
@@ -11,6 +11,7 @@ const insertTodos = (title, userId) => {
       completed: false,
       title: ${title},
       user_id: ${userId}
+      file_id: ${file_id}
     }
   ) {
     returning {
@@ -86,7 +87,7 @@ const Todo = () => {
 
     setTodoTitle("");
     setTodoAttachment(null);
-    router.push("/");
+    router.back();
   };
 
   // console.log("User Id: ", id);
