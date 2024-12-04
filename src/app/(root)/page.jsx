@@ -187,35 +187,39 @@ export default function Home() {
                       </tr>
                     </thead>
                     <tbody>
-                      {todos.map((todo, index) => (
-                        <tr key={index}>
-                          <td className="py-3 px-4">{todo.id}</td>
-                          <td className="py-3 px-4">{todo.title}</td>
-                          <td className="py-3 px-4 inline-flex justify-center items-center gap-2">
-                            <div
-                              className={` h-2 w-2 rounded-full ${
-                                todo.completed ? "bg-green-600" : "bg-red-600"
-                              }`}
-                            ></div>
-                            <button
-                              type="button"
-                              onClick={() => handleUpdateTodo(todo.id)}
-                            >
-                              Toggle
-                            </button>
-                          </td>
-                          <td className="py-3 px-4">{todo.created_at}</td>
-                          <td className="py-3 px-4">{todo.updated_at}</td>
-                          <td className="py-3 px-4">
-                            <button
-                              type="button"
-                              onClick={() => handleDeleteTodo(todo.id)}
-                            >
-                              Delete
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
+                      {todos ? (
+                        todos.map((todo, index) => (
+                          <tr key={index}>
+                            <td className="py-3 px-4">{todo.id}</td>
+                            <td className="py-3 px-4">{todo.title}</td>
+                            <td className="py-3 px-4 inline-flex justify-center items-center gap-2">
+                              <div
+                                className={` h-2 w-2 rounded-full ${
+                                  todo.completed ? "bg-green-600" : "bg-red-600"
+                                }`}
+                              ></div>
+                              <button
+                                type="button"
+                                onClick={() => handleUpdateTodo(todo.id)}
+                              >
+                                Toggle
+                              </button>
+                            </td>
+                            <td className="py-3 px-4">{todo.created_at}</td>
+                            <td className="py-3 px-4">{todo.updated_at}</td>
+                            <td className="py-3 px-4">
+                              <button
+                                type="button"
+                                onClick={() => handleDeleteTodo(todo.id)}
+                              >
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <div>Please Insert Some Todo's</div>
+                      )}
                     </tbody>
                   </table>
                 </div>
